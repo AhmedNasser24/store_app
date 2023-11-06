@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.pushNamed(context, PostView.id) ;
+            Navigator.pushNamed(context, PostView.id);
           },
           child: const Icon(Icons.add),
         ),
@@ -38,6 +38,13 @@ class HomeView extends StatelessWidget {
             ),
           ),
           actions: [
+            IconButton(
+              onPressed: () {
+                BlocProvider.of<GetProductCubit>(context).getAllProduct();
+              },
+              
+              icon: const Icon(Icons.replay , color: Colors.black,  ),
+            ),
             IconButton(
                 onPressed: () {},
                 icon: const Icon(

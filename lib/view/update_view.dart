@@ -72,6 +72,22 @@ class UpdateView extends StatelessWidget {
                     onChanged: (data) {
                       updatePrice = data;
                     },
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return null;
+                      }
+                      if (value.startsWith('0')) {
+                        return 'Price cannot start with a leading zero';
+                      }
+                      final num? x = double.tryParse(value);
+                      if (x == null) {
+                        return 'enter valid price ';
+                      }
+                      if (x <= 0) {
+                        return 'enter postive price';
+                      }
+                      return null ;
+                    },
                     hintText: 'enter product price'),
                 const SizedBox(
                   height: 45,
@@ -83,10 +99,15 @@ class UpdateView extends StatelessWidget {
                           .updateProduct(bodyAfterUpdate: {
                         'id': '${product.id}',
                         'title': product.title,
-                        'price': updatePrice == null ? '${product.price}' : updatePrice! ,
+                        'price': updatePrice == null
+                            ? '${product.price}'
+                            : updatePrice!,
                         'description': product.description,
-                        'image': updateImage == null ?  product.image : updateImage!,
-                        'category': updateCategory == null ? product.category : updateCategory! ,
+                        'image':
+                            updateImage == null ? product.image : updateImage!,
+                        'category': updateCategory == null
+                            ? product.category
+                            : updateCategory!,
                       }, i: index);
                       Navigator.pop(context);
                     })
@@ -97,5 +118,4 @@ class UpdateView extends StatelessWidget {
       ),
     );
   }
-
 }

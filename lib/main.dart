@@ -29,7 +29,7 @@ class StoreApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           HomeView.id: (context) => const HomeView(),
-          PostView.id :(context) => const PostView() ,
+          PostView.id :(context) =>  PostView() ,
         },
         initialRoute: HomeView.id,
       ),
