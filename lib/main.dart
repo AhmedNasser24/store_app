@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubits/get_product_cubit/get_product_cubit.dart';
 import 'cubits/update_product_cubit/update_product_cubit.dart';
 import 'view/home_view.dart';
+import 'view/post_view.dart';
 
 void main() {
   runApp(const StoreApp());
@@ -28,6 +29,7 @@ class StoreApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           HomeView.id: (context) => const HomeView(),
+          PostView.id :(context) => const PostView() ,
         },
         initialRoute: HomeView.id,
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/products_model.dart';
+import 'cached_network_image.dart';
 
 
 class CustomCard extends StatelessWidget {
@@ -57,14 +58,11 @@ class CustomCard extends StatelessWidget {
             ),
           ),
         ),
+        
         Positioned(
           right: 20,
           top: -35,
-          child: Image(
-            height: 100,
-            width: 80,
-            image: NetworkImage(product.image),
-          ),
+          child: CustomCachedNetworkImage(image: product.image,)
         ),
       ],
     );

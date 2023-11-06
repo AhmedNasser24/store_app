@@ -22,7 +22,7 @@ class ProductModel {
 
   factory ProductModel.fromJson(jsonData) {
     return ProductModel(
-      id: jsonData['id'],
+      id: jsonData['id']  ,
       title: jsonData['title'],
       price: jsonData['price'],
       description: jsonData['description'],

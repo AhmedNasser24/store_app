@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../cubits/get_product_cubit/get_product_cubit.dart';
 import '../widget/custom_grid_view.dart';
+import 'post_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -13,6 +14,12 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, PostView.id) ;
+          },
+          child: const Icon(Icons.add),
+        ),
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
@@ -23,7 +30,7 @@ class HomeView extends StatelessWidget {
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              // Navigator.pop(context);
             },
             icon: const Icon(
               Icons.arrow_back_ios_new,

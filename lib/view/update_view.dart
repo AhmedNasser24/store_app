@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../cubits/update_product_cubit/update_product_cubit.dart';
 import '../widget/custom_button.dart';
-import '../widget/custom_textfield.dart';
+import '../widget/custom_text_form_field.dart';
 
 class UpdateView extends StatelessWidget {
   const UpdateView({super.key, required this.product, required this.index});
@@ -43,7 +43,7 @@ class UpdateView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CustomTextField(
+                CustomTextFormField(
                     onChanged: (data) {
                       updateProductName = data;
                     },
@@ -51,7 +51,7 @@ class UpdateView extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                CustomTextField(
+                CustomTextFormField(
                     onChanged: (data) {
                       updateImage = data;
                     },
@@ -59,7 +59,7 @@ class UpdateView extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                CustomTextField(
+                CustomTextFormField(
                     onChanged: (data) {
                       updateCategory = data;
                     },
@@ -67,7 +67,7 @@ class UpdateView extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                CustomTextField(
+                CustomTextFormField(
                     keyboardType: TextInputType.number,
                     onChanged: (data) {
                       updatePrice = data;
@@ -98,16 +98,4 @@ class UpdateView extends StatelessWidget {
     );
   }
 
-  // Future<void> updateProduct(ProductModel product) async {
-  //   ProductModel productAfterUpdate =
-  //       await UpdateProductService().updateProduct(bodyAfterUpdate: {
-  //     'id': '${product.id}',
-  //     'title': product.title,
-  //     'price': '12',
-  //     'description': product.description,
-  //     'image': product.image,
-  //     'category': 'ahmed'
-  //   });
-  //   print(productAfterUpdate);
-  // }
 }

@@ -1,16 +1,7 @@
-# store_app
+I learnd from this app : 
+1) how to deal with postman
+2) how to deal with API ( get , post , update )
+3) i learnd about header and authentication 
+4) i made to cubits to get , post and update product 
+5) i used CachedNetworkImage widget instead of networkImage widget
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

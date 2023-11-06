@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/constants.dart';
 
 
 
-class CustomTextField extends StatelessWidget {
-  CustomTextField({
+
+class CustomTextFormField extends StatelessWidget {
+  CustomTextFormField({
     super.key,
     required this.onChanged ,
     required this.hintText,
@@ -30,7 +30,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         focusedBorder:OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.black),
+          borderSide: const BorderSide(color: Colors.black , width: 2),
           borderRadius: BorderRadius.circular(8),
         ) ,
         border: OutlineInputBorder(
