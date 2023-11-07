@@ -10,7 +10,7 @@ import 'custom_button.dart';
 import 'custom_text_form_field.dart';
 
 class UpdateViewBody extends StatefulWidget {
-  UpdateViewBody({super.key, required this.product, required this.index});
+  const UpdateViewBody({super.key, required this.product, required this.index});
   final ProductModel product;
   final int index;
 
@@ -96,11 +96,11 @@ class _UpdateViewBodyState extends State<UpdateViewBody> {
                     text: 'Update',
                     onTap: () async {
                       if (_updateProductKey.currentState!.validate()) {
-                        await imageUrlIsvalid(context);
-
                         setState(() {
                           isLoading = true;
                         });
+                        await imageUrlIsvalid(context);
+
                         await BlocProvider.of<UpdateProductCubit>(context)
                             .updateProduct(bodyAfterUpdate: {
                           'id': '${widget.product.id}',
@@ -116,9 +116,7 @@ class _UpdateViewBodyState extends State<UpdateViewBody> {
                               ? widget.product.category
                               : updateCategory!,
                         }, i: widget.index);
-                        setState(() {
-                          isLoading = false;
-                        });
+
                         Navigator.pop(context);
                       }
                     },
@@ -133,12 +131,11 @@ class _UpdateViewBodyState extends State<UpdateViewBody> {
   }
 
   Future<void> imageUrlIsvalid(BuildContext context) async {
-    if (updateImage!.isNotEmpty || updateImage != null) {
-      final validationMessage =
-          await validateImageURL(updateImage!);
-      if ( validationMessage != null){
-        showSnackBar(context, validationMessage) ;
-      }    
+    if ( updateImage != null) {
+      final validationMessage = await validateImageURL(updateImage!);
+      if (validationMessage != null) {
+        showSnackBar(context, validationMessage);
+      }
     }
   }
 }
