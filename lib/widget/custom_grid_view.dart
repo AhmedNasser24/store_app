@@ -48,12 +48,7 @@ class CustomGridView extends StatelessWidget {
                 ),
               );
             } else if (state is UpdateProductFailure) {
-              return Center(
-                child: Text(
-                  state.errMessage,
-                  style: const TextStyle(color: Colors.black, fontSize: 16),
-                ),
-              );
+              return ShowErrorMessage(errMessage: state.errMessage,);
             } else if (state is UpdateProductLoading) {
               return const Center(
                 child: CircularProgressIndicator(
@@ -77,6 +72,22 @@ class CustomGridView extends StatelessWidget {
             }
           },
         ),
+      ),
+    );
+  }
+}
+
+class ShowErrorMessage extends StatelessWidget {
+  const ShowErrorMessage({
+    super.key, required this.errMessage,
+  });
+  final String errMessage ;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        errMessage,
+        style: const TextStyle(color: Colors.black, fontSize: 16),
       ),
     );
   }
