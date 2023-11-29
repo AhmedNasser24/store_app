@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:store_app/widget/loading.dart';
 
 import '../cubits/get_product_cubit/get_product_cubit.dart';
 import '../widget/custom_grid_view.dart';
+import '../widget/show_error_message.dart';
 import 'post_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -42,8 +44,10 @@ class HomeView extends StatelessWidget {
               onPressed: () {
                 BlocProvider.of<GetProductCubit>(context).getAllProduct();
               },
-              
-              icon: const Icon(Icons.replay , color: Colors.black,  ),
+              icon: const Icon(
+                Icons.replay,
+                color: Colors.black,
+              ),
             ),
             IconButton(
                 onPressed: () {},
@@ -58,17 +62,9 @@ class HomeView extends StatelessWidget {
             if (state is GetProductSuccess) {
               return CustomGridView(productList: state.productList);
             } else if (state is GetProductFailure) {
-              return Center(
-                child: Text(
-                  state.errMessage,
-                  style: const TextStyle(color: Colors.black, fontSize: 16),
-                ),
-              );
+              return ShowErrorMessage(errMessage: state.errMessage);
             } else {
-              return const Center(
-                  child: CircularProgressIndicator(
-                color: Colors.red,
-              ));
+              return const Loading() ;
             }
           },
         ));

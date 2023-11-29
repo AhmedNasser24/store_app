@@ -6,6 +6,9 @@ import '../view/update_view.dart';
 import 'custom_card.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'loading.dart';
+import 'show_error_message.dart';
+
 class CustomGridView extends StatelessWidget {
   const CustomGridView({
     super.key,
@@ -27,7 +30,8 @@ class CustomGridView extends StatelessWidget {
             // mainAxisExtent: 150,
             childAspectRatio: 1.3),
         itemCount: productList.length,
-        itemBuilder: (context, index) => BlocBuilder<UpdateProductCubit, UpdateProductState>(
+        itemBuilder: (context, index) =>
+            BlocBuilder<UpdateProductCubit, UpdateProductState>(
           builder: (context, state) {
             if (state is UpdateProductSuccess) {
               return GestureDetector(
@@ -48,21 +52,18 @@ class CustomGridView extends StatelessWidget {
                 ),
               );
             } else if (state is UpdateProductFailure) {
-              return ShowErrorMessage(errMessage: state.errMessage,);
-            } else if (state is UpdateProductLoading) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.red,
-                ),
+              return ShowErrorMessage(
+                errMessage: state.errMessage,
               );
-            }else {
+            } else if (state is UpdateProductLoading) {
+              return const Loading();
+            } else {
               return GestureDetector(
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => UpdateView(
-                        product:  productList[index],
-                        index: index),
+                    builder: (context) =>
+                        UpdateView(product: productList[index], index: index),
                   ),
                 ),
                 child: CustomCard(
@@ -77,18 +78,3 @@ class CustomGridView extends StatelessWidget {
   }
 }
 
-class ShowErrorMessage extends StatelessWidget {
-  const ShowErrorMessage({
-    super.key, required this.errMessage,
-  });
-  final String errMessage ;
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        errMessage,
-        style: const TextStyle(color: Colors.black, fontSize: 16),
-      ),
-    );
-  }
-}
