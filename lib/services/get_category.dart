@@ -1,6 +1,4 @@
-import 'dart:convert';
 
-import 'package:http/http.dart' as http;
 import 'package:store_app/constants.dart';
 import 'package:store_app/models/products_model.dart';
 

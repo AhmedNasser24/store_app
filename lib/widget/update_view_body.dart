@@ -100,9 +100,7 @@ class _UpdateViewBodyState extends State<UpdateViewBody> {
                           isLoading = true;
                         });
                         await imageUrlIsvalid(context);
-
-                        await BlocProvider.of<UpdateProductCubit>(context)
-                            .updateProduct(bodyAfterUpdate: {
+                        Map<String, String> updatedProductInfo = {
                           'id': '${widget.product.id}',
                           'title': widget.product.title,
                           'price': updatePrice == null
@@ -115,7 +113,11 @@ class _UpdateViewBodyState extends State<UpdateViewBody> {
                           'category': updateCategory == null
                               ? widget.product.category
                               : updateCategory!,
-                        }, i: widget.index);
+                        };
+                        await BlocProvider.of<UpdateProductCubit>(context)
+                            .updateProduct(
+                                bodyAfterUpdate: updatedProductInfo,
+                                i: widget.index);
 
                         Navigator.pop(context);
                       }
@@ -131,7 +133,7 @@ class _UpdateViewBodyState extends State<UpdateViewBody> {
   }
 
   Future<void> imageUrlIsvalid(BuildContext context) async {
-    if ( updateImage != null) {
+    if (updateImage != null) {
       final validationMessage = await validateImageURL(updateImage!);
       if (validationMessage != null) {
         showSnackBar(context, validationMessage);

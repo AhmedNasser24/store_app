@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/cubits/get_product_cubit/get_product_cubit.dart';
-import 'package:store_app/helper/show_snack_bar.dart';
-import 'package:store_app/widget/custom_button.dart';
-import 'package:store_app/widget/custom_text_form_field.dart';
 
 import '../widget/post_view_body.dart';
 
